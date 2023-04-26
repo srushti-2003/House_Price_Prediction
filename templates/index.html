@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House Price Predictor</title>
+    <style>
+      .container {
+  margin: auto;
+  max-width: 500px;
+  padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+label {
+  display: block;
+  font-size: 24px;
+  margin-top: 30px;
+}
+
+input {
+  font-size: 24px;
+  padding: 5px 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  margin-top: 30px;
+  padding: 10px 20px;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+p {
+  font-size: 24px;
+  margin-top: 20px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>House Price Predictor</h1>
+      <center>
+      <form method="POST" action="/predict">
+        <br>
+        <strong>Overall Quality (1-10): </strong>
+        <input type="number" name="overallqual" min="1" max="10" required>
+        <br>
+        <strong>GrLivArea (sqft): </strong>
+        <input type="number" name="grlivarea" min="0" required>
+        <br>
+        <strong>Garage Cars: </strong>
+        <input type="number" name="garagecars" min="0" required>
+        <br>
+        <strong>Garage Area (sqft): </strong>
+        <input type="number" name="garagearea" min="0" required>
+        <br>
+        <strong>TotalBsmtSF (sqft): </strong>
+        <input type="number" name="totalbsmtsf" min="0" required>
+        <br>
+        <strong>1stFlrSF (sqft): </strong>
+        <input type="number" name="firstflrsf" min="0" required>
+        <br>
+        <button type="submit">Predict Price</button>
+      </form>
+      </center>
+
+      {% if prediction_text %}
+        <h2>Predicted House Price:</h2>
+        <p>{{ prediction_text }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
